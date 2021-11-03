@@ -1,11 +1,13 @@
 import React from 'react';
 
+import { connect } from 'react-redux'
+
 import MovieListItem from './MovieListItem';
 import MovieFooter from './MovieFooter';
 
 const MovieList = (props)=> {
     const movies = [];
-
+    // console.log("MovieList props:" , props)
     return (
         <div className="col">
             <table className="table table-striped table-hover">
@@ -21,14 +23,21 @@ const MovieList = (props)=> {
 
                 <tbody>
                     {
-                        movies.map(movie=><MovieListItem key={movie.id} movie={movie}/>)
+                        props.movies.map(movie=><MovieListItem key={movie.id} movie={movie}/>)
                     }
                 </tbody>
             </table>
             
-            <MovieFooter totalMovies={movies.length}/>
+            <MovieFooter totalMovies={props.movies.length}/>
         </div>
     );
 }
 
-export default MovieList;
+const mapStateToProps = (state) => {
+    // console.log("Movies:", state.movies)
+    return {
+        movies: state.movies.movies
+    }
+}
+
+export default connect(mapStateToProps)(MovieList); // we are going to connect are component

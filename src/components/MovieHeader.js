@@ -36,8 +36,8 @@ const mapStateToProps = (state) => {
     // console.log("displayFavorites:", state.displayFavorites)
     return {
 
-        appTitle: state.appTitle,
-        displayFavorites: state.displayFavorites
+        appTitle: state.movies.appTitle,
+        displayFavorites: state.movies.displayFavorites
 
     }
 }

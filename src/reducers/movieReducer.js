@@ -5,8 +5,9 @@ const initialState = {
     movies: movies,
     appTitle: "IMDB Movie Database"
 }
-
-const reducer = (state, action) => {
+                                    /** leaving state as it is, will give undefine */ 
+const reducer = (state = initialState, action) => { /** set state = initialState */ 
+    // console.log(state); 
     switch(action.type) {
         case DELETE_MOVIE:
             return {
